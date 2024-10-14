@@ -117,3 +117,30 @@ function gameObject() {
 }
 
 console.log(gameObject());
+
+function homeTeamName() {
+    return gameObject()["home"]["teamName"];
+  }
+  
+  function awayTeamName() {
+    return gameObject()["away"]["teamName"];
+  }
+  
+  function homeTeamScore() {
+    return gameObject()["home"]["score"];
+  }
+  
+  function awayTeamScore() {
+    return gameObject()["away"]["score"];
+  }
+  
+  function totalScore() {
+    return homeTeamScore() + awayTeamScore();
+  }
+  
+  console.log(homeTeamName()); // logs "Brooklyn Nets"
+  console.log(awayTeamName()); // logs "Toronto Raptors"
+  console.log(homeTeamScore()); // logs the score of the home team
+  console.log(awayTeamScore()); // logs the score of the away team
+  console.log(totalScore()); // logs the total score
+  
