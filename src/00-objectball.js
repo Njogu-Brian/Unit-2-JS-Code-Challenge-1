@@ -1,3 +1,5 @@
+//first test
+
 function gameObject() {
   return {
     home: {
@@ -117,20 +119,32 @@ function gameObject() {
 
 console.log(gameObject());
 
+//Second Test : Building functions
+
+//get players in both teams
 function homeTeamName() {
   return gameObject()["home"]["teamName"];
 }
 
 console.log(homeTeamName());
 
+// Number of point scored
 function numPointsScored(playerName) {
   return gameObject()["home"]["players"][playerName]?.points || gameObject()["away"]["players"][playerName]?.points;
 }
 
+console.log(numPointsScored("Ben Gordon"));
+console.log(numPointsScored("Alan Anderson"));
+
+//Shoe size
 function shoeSize(playerName) {
   return gameObject()["home"]["players"][playerName]?.shoe || gameObject()["away"]["players"][playerName]?.shoe;
 }
 
+console.log(shoeSize("Ben Gordon"));
+console.log(shoeSize("Mason Plumlee"));
+
+//team colors
 function teamColors(teamName) {
   if (gameObject()["home"]["teamName"] === teamName) {
     return gameObject()["home"]["colors"];
@@ -139,40 +153,68 @@ function teamColors(teamName) {
   }
 }
 
+console.log(teamColors("Brooklyn Nets"));
+console.log(teamColors("Charlotte Hornets"));
+
+//team names
 function teamNames() {
   return [gameObject()["home"]["teamName"], gameObject()["away"]["teamName"]];
 }
 
+console.log(teamNames());
+
+//player numbers
 function playerNumbers(teamName) {
   const players = teamName === gameObject()["home"]["teamName"] ? gameObject()["home"]["players"] : gameObject()["away"]["players"];
   return Object.values(players).map(player => player.number);
 }
 
+console.log(playerNumbers("Brooklyn Nets"));
+console.log(playerNumbers("Charlotte Hornets"));
+
+//player stats
 function playerStats(playerName) {
   return gameObject()["home"]["players"][playerName] || gameObject()["away"]["players"][playerName];
 }
 
+console.log(playerStats("Mason Plumlee"));
+
+//big shoe rounds
 function bigShoeRebounds() {
   const players = { ...gameObject()["home"]["players"], ...gameObject()["away"]["players"] };
   let largestShoePlayer = Object.values(players).reduce((prev, curr) => (prev.shoe > curr.shoe ? prev : curr));
   return largestShoePlayer.rebounds;
 }
 
+console.log(bigShoeRebounds());
+
+//most points scored
+
 function mostPointsScored() {
   const players = { ...gameObject()["home"]["players"], ...gameObject()["away"]["players"] };
   return Object.keys(players).reduce((prev, curr) => (players[prev].points > players[curr].points ? prev : curr));
 }
 
+console.log(mostPointsScored());
+
+//winning team
 function winningTeam() {
   const homePoints = Object.values(gameObject()["home"]["players"]).reduce((sum, player) => sum + player.points, 0);
   const awayPoints = Object.values(gameObject()["away"]["players"]).reduce((sum, player) => sum + player.points, 0);
   return homePoints > awayPoints ? gameObject()["home"]["teamName"] : gameObject()["away"]["teamName"];
 }
 
+console.log(winningTeam());
+
+//longest name
 function playerWithLongestName() {
   const players = { ...gameObject()["home"]["players"], ...gameObject()["away"]["players"] };
   return Object.keys(players).reduce((prev, curr) => (curr.length > prev.length ? curr : prev));
 }
+
+console.log(playerWithLongestName());
+
+//Bonus questions
 
 function doesLongNameStealATon() {
   const longestName = playerWithLongestName();
