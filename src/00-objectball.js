@@ -158,4 +158,46 @@ function bigShoeRebounds() {
   return largestShoePlayer.rebounds;
 }
 
+function mostPointsScored() {
+  const players = { ...gameObject()["home"]["players"], ...gameObject()["away"]["players"] };
+  return Object.keys(players).reduce((prev, curr) => (players[prev].points > players[curr].points ? prev : curr));
+}
 
+function winningTeam() {
+  const homePoints = Object.values(gameObject()["home"]["players"]).reduce((sum, player) => sum + player.points, 0);
+  const awayPoints = Object.values(gameObject()["away"]["players"]).reduce((sum, player) => sum + player.points, 0);
+  return homePoints > awayPoints ? gameObject()["home"]["teamName"] : gameObject()["away"]["teamName"];
+}
+
+function playerWithLongestName() {
+  const players = { ...gameObject()["home"]["players"], ...gameObject()["away"]["players"] };
+  return Object.keys(players).reduce((prev, curr) => (curr.length > prev.length ? curr : prev));
+}
+
+function doesLongNameStealATon() {
+  const longestName = playerWithLongestName();
+  const players = { ...gameObject()["home"]["players"], ...gameObject()["away"]["players"] };
+  return players[longestName].steals > 0;
+}
+
+function mostPointsScored() {
+  const players = { ...gameObject()["home"]["players"], ...gameObject()["away"]["players"] };
+  return Object.keys(players).reduce((prev, curr) => (players[prev].points > players[curr].points ? prev : curr));
+}
+
+function winningTeam() {
+  const homePoints = Object.values(gameObject()["home"]["players"]).reduce((sum, player) => sum + player.points, 0);
+  const awayPoints = Object.values(gameObject()["away"]["players"]).reduce((sum, player) => sum + player.points, 0);
+  return homePoints > awayPoints ? gameObject()["home"]["teamName"] : gameObject()["away"]["teamName"];
+}
+
+function playerWithLongestName() {
+  const players = { ...gameObject()["home"]["players"], ...gameObject()["away"]["players"] };
+  return Object.keys(players).reduce((prev, curr) => (curr.length > prev.length ? curr : prev));
+}
+
+function doesLongNameStealATon() {
+  const longestName = playerWithLongestName();
+  const players = { ...gameObject()["home"]["players"], ...gameObject()["away"]["players"] };
+  return players[longestName].steals > 0;
+}
